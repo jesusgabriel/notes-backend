@@ -1,0 +1,88 @@
+WEB2040 final example
+
+Which of the following is a valid insert statement in mongodb? (5 pts)
+
+db.test.insert({x:2,y:"apple"})
+db.test.push({x:2,y:"apple"})
+db.test.insert({"x":2} {"y":"apple"})
+db.test.insert({"x":2}, {"y":"apple"})
+
+----db.test.insert({x:2,y:"apple"})
+
+Given a collection named books within a database named library, write the statement you would use to query all the contents of the collection in such a way that the results are displayed in JSON format with one property-value pair per line. (5 pts)
+Dada una coleccion llamada books dentro de una base de datos llamada library,
+ escriba el comando que usted utilizaria para extraer todos los contenidos
+ de la coleccion de tal manera que los resultados
+ salgan en formato JSON con una propiedad por linea (resultados impresos de forma bonita).
+
+-----library.book.find().pretty()
+
+A query may include a ___________ that specifies the fields from the matching documents to return. (5 pts)
+a. selection
+b. projection
+c. union
+d. None of the mentioned
+
+MongoDB stores all documents in: (5 pts)
+a. tables
+b. collections
+c. rows
+d. All of the mentioned
+
+------collections
+
+If you want to change an existing collection in mongodb, you must use the following command: (5 pts)
+a. insert
+b. delete then insert
+c. update
+d. None of the above
+
+------update
+
+Given a collection named students, where the documents
+ have first_name and last_name properties,
+how would you write a mondogb query that looks up all students with the last name "Castro"? (5 pts)
+
+Dada una coleccion llamada students,
+ donde los documentos tienen campus first_name y last_name,
+ como escribiria un query en mongodb para encontrar a todos los estudiantes que tengan el apellido "Castro"?
+
+------db.students.find({last_name:'Castro'}).pretty()
+
+Do all the problems in this page: http://sqlzoo.net/wiki/Guest_House_Assessment_Easy (40 pts)
+----- SELECT first_name,last_name
+FROM booking JOIN guest ON guest_id = guest.id
+ WHERE room_no=101 AND booking_date='2016-11-17'
+
+-----SELECT first_name, last_name,booking_date,arrival_time
+  FROM  guest JOIN booking where
+booking_date='2016-11-05'
+order by arrival_time desc
+
+-----SELECT booking_id, room_type, occupants, amount
+  FROM rate INNER JOIN booking
+ON booking_id= 5152
+ order by amount desc
+
+----- SELECT first_name, last_name, address FROM
+ guest JOIN booking
+ON guest_id = guest.id
+ WHERE room_no=101 AND booking_date='2016-12-03'
+
+-----SELECT booking.guest_id, COUNT(booking.nights)
+ FROM booking INNER JOIN guest
+ON booking.guest_id =guest_id
+where booking.guest_id=1185
+GROUP by booking.guest_id
+
+
+Do any two of the problems on this page: http://sqlzoo.net/wiki/Guest_House_Assessment_Medium (20pts)
+
+Create a node project named notes-backend. This project should meet the following criteria:
+
+There should be a Note model that has the following attributes:
+Decription
+Created Date
+Author
+The server should connect to mongodb using mongoose
+There should be a route capable of displaying all the contents of a database called notes-app and a collection called notes. The results should be sent back to the client in json format.
